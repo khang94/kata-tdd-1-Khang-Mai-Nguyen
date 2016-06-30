@@ -1,4 +1,4 @@
-describe(Add1, function(){
+describe(Add, function(){
     beforeeach(function(){
        // alert('before each');
         var guiTest = '<h1>Input the string and click button to see whether the test is pass or not . </h1>'+
@@ -18,7 +18,7 @@ describe(Add1, function(){
     });
 
     beforeeach(function(){
-       window.Add1.init();
+       window.Add.init();
     });
     it('should return empty for ""',function(){
 
