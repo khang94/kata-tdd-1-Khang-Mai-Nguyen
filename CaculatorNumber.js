@@ -133,7 +133,7 @@ describe('stringCaculator',function(){
         expect(Add(inputString)).toBe(3);
     })
 
-    // Question 5 show negative number to throw exception
+    // Question 5 show list negative number to throw exception
     it('negative number is not allowed', function(){
         var inputString ='-1,-2,-3';
         var lstNegativeNumber = [-1, -2 ,-3];
