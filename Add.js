@@ -1,7 +1,7 @@
 /**
  * Created by khang on 6/29/2016.
  */
-window.Add1 = window.Add1 || {};
+window.Add = window.Add || {};
 (function(){
     var caculator = function(){
         var inputString = document.getElementById('string').value;
@@ -30,7 +30,7 @@ window.Add1 = window.Add1 || {};
         document.getElementById('result').innerHTML = result.toString();
         return result;
     };
-    window.Add1.init = function(){
+    window.Add.init = function(){
         document.getElementById('btnClick').addEventListener('click',caculator);
 
 
