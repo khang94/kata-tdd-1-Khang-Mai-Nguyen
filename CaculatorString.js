@@ -14,11 +14,21 @@ function Add(inputNumber){
             
             //;\n1;2 ==> 0,1,2 ==> return 3
             inputNumber = inputNumber.replace(';\n',',');
+            // Replace all the ';' => ','
             if(inputNumber.indexOf(';')>-1){
-                inputNumber = inputNumber.replace(';',',');
+                for(var i = 0 ; i < inputNumber.length;i++){
+                    if (inputNumber[i].equals(',')){
+                        inputNumber = inputNumber.replace(';',',');
+                    }
+                }
             }
+            // Replace all the '//' => '0'
             if(inputNumber.indexOf('//')>-1){
-                inputNumber = inputNumber.replace('//','0');
+                for(var i = 0 ; i < inputNumber.length ; i++){
+                    if(inputNumber[i].equals(',')){
+                        inputNumber = inputNumber.replace('//','0');
+                    }
+                }
             }
 
         }
