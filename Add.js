@@ -1,11 +1,17 @@
 /**
  * Created by khang on 6/29/2016.
  */
-window.Add = window.Add || {};
+window.Add1 = window.Add1 || {};
 (function(){
     var caculator = function(){
         var inputString = document.getElementById('string').value;
-        //alert(inputString);
+
+        alert(inputString.lastIndexOf(',\n'));
+
+        if(inputString.lastIndexOf('\n')> -1){
+            var test = inputString.replace('\n',',');
+            alert(test);
+        }
         var arrayOfNumber = [];
         var result = 0 ;
         if(inputString.length == 0){
@@ -30,7 +36,7 @@ window.Add = window.Add || {};
         document.getElementById('result').innerHTML = result.toString();
         return result;
     };
-    window.Add.init = function(){
+    window.Add1.init = function(){
         document.getElementById('btnClick').addEventListener('click',caculator);
 
 
