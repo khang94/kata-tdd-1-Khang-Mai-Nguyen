@@ -22,15 +22,15 @@ describe(Add, function(){
     it('should return empty for ""',function(){
 
         document.getElementById('string').value='';
-        expect(document.getElementById('result').innerHTML).toBe('');
+        expect(document.getElementById('result').innerHTML).toBe(0);
     });
     it('should return 1 for "1"',function(){
         document.getElementById('string').value = '1';
-        expect(document.getElementById('result').innerHTML).toBe('1');
+        expect(document.getElementById('result').innerHTML).toBe(1);
     });
     it('should return 3 for "1,2"',function(){
           document.getElementById('string').value = '1,2';
-          expect(document.getElementById('result').innerHTML).toBe('3');
+          expect(document.getElementById('result').innerHTML).toBe(3);
     });
 });
 /**
