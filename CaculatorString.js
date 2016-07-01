@@ -11,7 +11,8 @@ function Add(inputNumber){
 
         // Handle delimiters
         if (inputNumber.indexOf(';\n')>-1){
-            //;\n1;2
+            
+            //;\n1;2 ==> return 3
             inputNumber = inputNumber.replace(';\n',',');
             if(inputNumber.indexOf(';')>-1){
                 inputNumber = inputNumber.replace(';',',');
@@ -21,6 +22,8 @@ function Add(inputNumber){
             }
 
         }
+        
+        // result return -1 when the input is invalided (eg. ",\n3,5,6,7" or "3,2\n," ....) ==> return -1
         if (inputNumber.lastIndexOf(',\n') == (inputNumber.length-2)
             ||  inputNumber.lastIndexOf('\n,') == (inputNumber.length-2)
             ||  inputNumber.indexOf(',\n') == 0){
@@ -34,9 +37,12 @@ function Add(inputNumber){
 
 
     // Analyse the String follow format 2,3,4,5 ....
+    // if the string is empty
     if(inputNumber == ""){
         result = 0 ;
     }
+    
+    // if the string have size 1
     else if (inputNumber.length == 1){
         if(!isNaN(inputNumber)){
             // Suppose it is positive number
@@ -52,6 +58,8 @@ function Add(inputNumber){
             result = -1;
         }
     }
+    // if their length > 1 => put it in the Array => if not have negative number => return their sum
+                                                //   if negative number is existed => put on the list and show the exception
     else  {
         arrayOfString = inputNumber.split(",");
         for(var i = 0 ; i < arrayOfString.length ; i++){
