@@ -12,7 +12,7 @@ function Add(inputNumber){
         // Handle delimiters
         if (inputNumber.indexOf(';\n')>-1){
             
-            //;\n1;2 ==> return 3
+            //;\n1;2 ==> 0,1,2 ==> return 3
             inputNumber = inputNumber.replace(';\n',',');
             if(inputNumber.indexOf(';')>-1){
                 inputNumber = inputNumber.replace(';',',');
