@@ -93,9 +93,6 @@ function checkLengthNumber(inputString ,index){
     for(var i = index + 1 ; i < inputString.length ; i++){
         var tempI = inputString[i];
         alert('temp I = ' + tempI + ' ,index = ' + i);
-        if (tempI.indexOf('\n')>-1 || isNaN(tempI)){
-            break;
-        }
         if(!isNaN(tempI)){
             stringNumber += tempI;
             intNumber = parseInt(stringNumber);
