@@ -58,13 +58,22 @@ function caculateStringWithDelimeter(inputString){
             if (inputString.indexOf('\n') > -1) {
                 inputString = inputString.replace('\n', ',');
             }
+            // Get value of previous index and check is it whether character or number .
+            // if it 's number we cannot use it and move to the next index 
+            // Ex : The string 123 we just start in the index[0] with 1 and count next index to get value 123 exactly
+            // not in the index[1] or index[2] which would make an error.
             var countBeforeIndex = "a";
             if(i>=1){
                 countBeforeIndex = inputString[i-1];
             }
             if (!isNaN(inputString[i]) && isNaN(countBeforeIndex)) {
+                // Get exactly value of number [***]100\n30;20 to return (100 + 30 + 20)
                 var identifyNumber = checkLengthNumber(inputString,i);
+                
+                // Set default value of character is number which just has length 1. [1-->9]
                 var temp = parseInt(inputString[i]);
+                
+                // If value number >= 10 , set temp again.
                 if(identifyNumber >= 10){
                     temp = identifyNumber;
                 }
@@ -72,11 +81,12 @@ function caculateStringWithDelimeter(inputString){
                 if (inputString[i - 1] == '-' && i > 0) {
                     temp = -parseInt(inputString[i]);
                 }
+                // Thrown an exception when there is any negative number in an array .
                 if (temp < 0) {
                     result = -2;
                     break;
                 }
-
+                // Get value >1000 to 0
                 temp = isBigNumber(temp);
                 result += temp;
                 alert ('TEMP = ' + temp + ' , RESULT = ' + result);
@@ -89,14 +99,13 @@ function caculateStringWithDelimeter(inputString){
 function checkLengthNumber(inputString ,index){
     var intNumber = 0;
     //   '//[***]\n1***2***3[***]1000;1002***5'
+    // Ex : 1000***10*3 ==> (1,0,0,0) + (1,0) + 3 --> 1000 + 10 + 3 || (not 1 + 1 + 3) 
     var stringNumber = inputString[index];
     for(var i = index + 1 ; i < inputString.length ; i++){
         var tempI = inputString[i];
-        alert('temp I = ' + tempI + ' ,index = ' + i);
         if(!isNaN(tempI)){
             stringNumber += tempI;
-            intNumber = parseInt(stringNumber);
-            alert('string number = ' + stringNumber + ' , int number = ' + intNumber);
+            intNumber = parseInt(stringNumber); // Parse string 1+0+0+0 => 1000 => int(1000).
         } else {
             break;
         }
@@ -124,9 +133,11 @@ function isValidString(inputString){
     if (inputString.length == 1 && isNaN(inputString)){
         check = false;
     }
+    // Ex '3,\n' ",\n" is not valid in this case or ',\n,9' .
     if (inputString.indexOf(',\n') > -1){
         check = false;
     }
+    // Check invalid input string ',3,5,6' || '\n3,5,6' || '3,5,6,' || '3,4,5,,,6' ...
     if(inputString.indexOf(',') == 0 || inputString.indexOf('\n') == 0
         || inputString.lastIndexOf(',') == inputString.length -1 || inputString.lastIndexOf('\n') == inputString.length
         || inputString.indexOf(',,')>-1){
@@ -251,7 +262,7 @@ describe('stringCaculator',function(){
     })
 
     // b
-    it('Number bigger than 1000 should be (ignored) equals zero Exception',function(){
+    it('Number bigger than 1000 should be (ignored) equals zero Exception 1',function(){
         var inputString = '1001,2,1002,3,5,1003,-1000';
         expect(refactorAdd(inputString)).toBe(-2);
     })
