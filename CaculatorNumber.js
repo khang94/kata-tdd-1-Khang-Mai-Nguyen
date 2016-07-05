@@ -288,17 +288,17 @@ describe('stringCaculator',function(){
 
     // Question 9 handle multiple delimiters with length longer than one char
     // a
-    it('handle multiple delimiters with length longer than one char ', function(){
+    it('handle multiple delimiters with length longer than one char 1 ', function(){
         var inputString = '//[******][%%%%%%]\n1*2%%%%%5';
         expect(refactorAdd(inputString)).toBe(8);
     })
     // b
-    it('handle multiple delimiters with length longer than one char ', function(){
+    it('handle multiple delimiters with length longer than one char 2', function(){
         var inputString = '//[******][%%%%%%]\n1*]]]]]20%%%%%5';
         expect(refactorAdd(inputString)).toBe(26);
     })
     // c
-    it('handle multiple delimiters with length longer than one char ', function(){
+    it('handle multiple delimiters with length longer than one char 3 ', function(){
         var inputString = '//[******][%%%%%%]\n1000*]]]]]20%%%%%5[&&&&&]+1001';
         expect(refactorAdd(inputString)).toBe(1025);
     })
